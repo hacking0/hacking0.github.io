@@ -1,0 +1,272 @@
+<template>
+    <Menu :theme="theme">
+        <Submenu v-for="item1 in menus" :name="item1.value">
+            <template slot="title">
+                {{item1.name}}
+            </template>
+            <MenuGroup v-if="item1.subMenus" v-for="item2 in item1.subMenus" :title="item2.name">
+                <MenuItem v-if="item2.subMenus" v-for="item3 in item2.subMenus" :name="item3.value">
+                    <router-link :to="item3.url">{{item3.name}}</router-link>
+                </MenuItem>
+            </MenuGroup>
+        </Submenu>
+    </Menu>
+</template>
+
+<script>
+    export default {
+        name: "menus",
+        data() {
+          return {
+              theme: 'light',
+              menus: [],
+          }
+        },
+        mounted() {
+            this.setMenus();
+        },
+        methods: {
+            setMenus() {
+                this.menus = [
+                    {
+                        name:'技术',
+                        value:'1',
+                        subMenus:[
+                            {
+                                name:'基础',
+                                value:'1-1',
+                                subMenus:[
+                                    {
+                                        name:'版本控制',
+                                        value:'1-1-1',
+                                        url:'/list/basicVersion',
+                                    },
+                                    {
+                                        name:'Linux',
+                                        value:'1-1-2',
+                                        url:'/list/basicLinux',
+                                    },
+                                    {
+                                        name:'操作系统',
+                                        value:'1-1-3',
+                                        url:'/list/basicOperator',
+                                    },
+                                    {
+                                        name:'编译原理',
+                                        value:'1-1-4',
+                                        url:'/list/basicCompiler',
+                                    },
+                                    {
+                                        name:'网络',
+                                        value:'1-1-5',
+                                        url:'/list/basicNet',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'JAVA',
+                                value:'1-2',
+                                subMenus:[
+                                    {
+                                        name:'集合类',
+                                        value:'1-2-1',
+                                        url:'/list/javaCollection',
+                                    },
+                                    {
+                                        name:'工具类',
+                                        value:'1-2-2',
+                                        url:'/list/javaUtils',
+                                    },
+                                    {
+                                        name:'并发',
+                                        value:'1-2-3',
+                                        url:'/list/javaConcurrency',
+                                    },
+                                    {
+                                        name:'框架',
+                                        value:'1-2-4',
+                                        url:'/list/javaFrame',
+                                    },
+                                    {
+                                        name:'JVM',
+                                        value:'1-2-5',
+                                        url:'/list/javaJvm',
+                                    },
+                                    {
+                                        name:'服务器',
+                                        value:'1-2-6',
+                                        url:'/list/javaServer',
+                                    },
+                                    {
+                                        name:'分布式',
+                                        value:'1-2-7',
+                                        url:'/list/javaDistribution',
+                                    },
+                                    {
+                                        name:'其他',
+                                        value:'1-2-8',
+                                        url:'/list/javaOther',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'设计模式',
+                                value:'1-3',
+                                subMenus:[
+                                    {
+                                        name:'单例模式',
+                                        value:'1-3-1',
+                                    },
+                                    {
+                                        name:'策略模式',
+                                        value:'1-3-2',
+                                    },
+                                    {
+                                        name:'代理模式',
+                                        value:'1-3-3',
+                                    },
+                                    {
+                                        name:'观察者模式',
+                                        value:'1-3-4',
+                                    },
+                                    {
+                                        name:'装饰模式',
+                                        value:'1-3-5',
+                                    },
+                                    {
+                                        name:'适配器模式',
+                                        value:'1-3-6',
+                                    },
+                                    {
+                                        name:'命令模式',
+                                        value:'1-3-7',
+                                    },
+                                    {
+                                        name:'组合模式',
+                                        value:'1-3-8',
+                                    },
+                                    {
+                                        name:'工厂模式',
+                                        value:'1-3-9',
+                                    },
+                                    {
+                                        name:'模板模式',
+                                        value:'1-3-10',
+                                    },
+                                    {
+                                        name:'其他',
+                                        value:'1-3-11',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'存储',
+                                value:'1-4',
+                                subMenus:[
+                                    {
+                                        name:'数据库',
+                                        value:'1-4-1',
+                                    },
+                                    {
+                                        name:'redis',
+                                        value:'1-4-2',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'算法',
+                                value:'1-5',
+                                subMenus:[
+                                    {
+                                        name:'数据结构',
+                                        value:'1-5-1',
+                                    },
+                                    {
+                                        name:'排序',
+                                        value:'1-5-2',
+                                    },
+                                    {
+                                        name:'LeetCode',
+                                        value:'1-5-3',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        name:'随笔',
+                        value:'2',
+                        subMenus:[
+                            {
+                                name:'文学',
+                                value:'2-1',
+                                subMenus:[
+                                    {
+                                        name:'主流',
+                                        value:'2-1-1',
+                                        url:'/list/literatureMain',
+                                    },
+                                    {
+                                        name:'武侠',
+                                        value:'2-1-2',
+                                    },
+                                    {
+                                        name:'杂七杂八',
+                                        value:'2-1-3',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'旅游',
+                                value:'2-2',
+                                subMenus:[
+                                    {
+                                        name:'华夏',
+                                        value:'2-2-1',
+                                    },
+                                    {
+                                        name:'埃及',
+                                        value:'2-2-2',
+                                    },
+                                    {
+                                        name:'菲律宾',
+                                        value:'2-2-3',
+                                    },
+                                    {
+                                        name:'泰国',
+                                        value:'2-2-4',
+                                    },
+                                    {
+                                        name:'日本',
+                                        value:'2-2-5',
+                                    },
+                                ],
+                            },
+                            {
+                                name:'杂记',
+                                value:'2-3',
+                                subMenus:[
+                                    {
+                                        name:'日常',
+                                        value:'2-3-1',
+                                        url:'/list/notesDaily',
+                                    },
+                                    {
+                                        name:'瞎想',
+                                        value:'2-3-2',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ];
+            },
+        },
+    }
+</script>
+
+<style scoped lang="less">
+    a {
+        color: #2f2f2f;
+    }
+</style>
